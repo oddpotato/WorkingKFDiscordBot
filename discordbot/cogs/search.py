@@ -70,8 +70,9 @@ class Search(commands.Cog):
             messagestring = "\n * ".join(episode_array)
             message = f"`{person}` is in episode:"
         elif len(episode_array) > 1:
+            numberofepisodes = len(episode_array)
             messagestring = "\n * ".join(episode_array)
-            message = f"`{person}` is in episodes:"
+            message = f"`{person}` is in `{numberofepisodes}` episodes:"
         else:
             embed=discord.Embed(title=f"Nothing found for `{person}`!", url=self.searchurl)
             embed.set_image(url="https://media.tenor.com/5U4tWWKQGDkAAAAM/alex-jones-crying.gif")
@@ -134,8 +135,9 @@ class Search(commands.Cog):
             messagestring = "\n * ".join(episode_array)
             message = f"`{topic}` comes up in episode:"
         elif len(episode_array) > 1:
+            numberofepisodes = len(episode_array)
             messagestring = "\n* ".join(episode_array)
-            message = f"`{topic}` comes up in episodes:"
+            message = f"`{topic}` comes up in `{numberofepisodes}` episodes:"
         else:
             embed=discord.Embed(title=f"Nothing found for `{topic}`!", url=self.searchurl)
             embed.set_image(url="https://static.independent.co.uk/2022/09/22/21/SEI126493450.jpg")
@@ -145,8 +147,6 @@ class Search(commands.Cog):
             embed.set_footer(text=self.footertext, icon_url=self.footericon)
             await interaction.followup.send(embed=embed)
         #await interaction.response.send_message(embed=embed)
-
-
 
 async def setup(bot):
     await bot.add_cog(Search(bot))
